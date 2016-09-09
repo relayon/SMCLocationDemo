@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "MLogRun.h"
 
 @interface SMCLocationDemoTests : XCTestCase
 
@@ -27,6 +28,12 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    
+    MLogRun* log = [MLogRun new];
+    [realm transactionWithBlock:^{
+        [realm addObject:log];
+    }];
 }
 
 - (void)testPerformanceExample {
