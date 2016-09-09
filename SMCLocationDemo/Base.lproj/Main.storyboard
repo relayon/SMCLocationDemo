@@ -210,11 +210,71 @@
                     <connections>
                         <outlet property="buttonStartStop" destination="WTZ-mY-TP8" id="Nf2-Jo-PtP"/>
                         <outlet property="tableView" destination="lwF-Vs-Xdc" id="QCM-5M-Mvz"/>
+                        <segue destination="sNC-DJ-CeV" kind="show" identifier="SG_SHOW_DETAIL" id="tyv-IZ-nVl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwL-nx-UDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-63.200000000000003" y="1345.2773613193403"/>
+        </scene>
+        <!--详情-->
+        <scene sceneID="gAr-f1-8m8">
+            <objects>
+                <tableViewController id="sNC-DJ-CeV" customClass="DetailTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EHg-Nt-5Dr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="sNC-DJ-CeV" id="CGU-xF-SzK"/>
+                            <outlet property="delegate" destination="sNC-DJ-CeV" id="QZN-LP-6sY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="详情" id="NDb-qY-rkh">
+                        <barButtonItem key="rightBarButtonItem" title="地图" id="eV1-om-2sy">
+                            <connections>
+                                <action selector="onButtonShowMap:" destination="sNC-DJ-CeV" id="0us-cP-XBJ"/>
+                                <segue destination="ezu-sZ-HNf" kind="show" id="Up7-v8-ERR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZP-Sj-xbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-63" y="2131"/>
+        </scene>
+        <!--位置-->
+        <scene sceneID="8tF-yg-s25">
+            <objects>
+                <viewController id="ezu-sZ-HNf" customClass="ShowLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l7f-e9-eKD"/>
+                        <viewControllerLayoutGuide type="bottom" id="pFe-YT-KE0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tbm-or-mUa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8yU-l1-SnW"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pFe-YT-KE0" firstAttribute="top" secondItem="8yU-l1-SnW" secondAttribute="bottom" id="0CL-X2-Xc8"/>
+                            <constraint firstItem="8yU-l1-SnW" firstAttribute="top" secondItem="l7f-e9-eKD" secondAttribute="bottom" id="JDi-dC-sft"/>
+                            <constraint firstItem="8yU-l1-SnW" firstAttribute="leading" secondItem="Tbm-or-mUa" secondAttribute="leading" id="XEl-qR-3RY"/>
+                            <constraint firstAttribute="trailing" secondItem="8yU-l1-SnW" secondAttribute="trailing" id="Zfe-jH-zgT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="位置" id="Dxl-LM-b87"/>
+                    <connections>
+                        <outlet property="mapView" destination="8yU-l1-SnW" id="Hk5-Pe-CoB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DCe-Dw-XzR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="760.79999999999995" y="2130.5847076461769"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="4Oh-r0-2Zk">

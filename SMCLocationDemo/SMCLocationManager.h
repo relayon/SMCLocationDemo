@@ -26,4 +26,8 @@ typedef NS_ENUM(NSInteger, LocationType) {
 - (void)setServiceStarted:(BOOL)started;
 - (BOOL)serviceStarted;
 
+// 获取 位置服务 的启动类型
+- (NSString*)getLaunchStatus:(NSInteger)launchStatus;
+- (NSString*)getAppStatus:(NSInteger)appStatus;
+
 @end

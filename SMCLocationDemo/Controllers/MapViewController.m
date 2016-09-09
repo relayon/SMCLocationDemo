@@ -23,27 +23,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _locationResults = [[MLogLocation allObjects] sortedResultsUsingProperty:@"date" ascending:NO];
-    _dataChange = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
-        _locationResults = [[MLogLocation allObjects] sortedResultsUsingProperty:@"date" ascending:NO];
-    }];
-    
     self.mapView.showsUserLocation = YES;
     self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+//    self.mapView.delegate = self;
     
-    self.mapView.delegate = self;
-    
-    if (_locationResults.count > 0) {
-        MLogLocation* loc = [_locationResults objectAtIndex:0];
-        MKPointAnnotation *ann = [[MKPointAnnotation alloc] init];
-        ann.coordinate = CLLocationCoordinate2DMake(loc.latitude, loc.longitude);
-//        [ann setTitle:@"天河城"];
-//        [ann setSubtitle:@"购物好去处"];
-        //触发viewForAnnotation
-        [self.mapView addAnnotation:ann];
-    }
-    
+    _locationResults = [[MLogLocation allObjects] sortedResultsUsingProperty:@"date" ascending:NO];
+    [self _updateAnnotation];
+    _dataChange = [[RLMRealm defaultRealm] addNotificationBlock:^(NSString *notification, RLMRealm *realm) {
+        _locationResults = [[MLogLocation allObjects] sortedResultsUsingProperty:@"date" ascending:NO];
+        [self _updateAnnotation];
+    }];
 }
+
+- (void)_updateAnnotation {
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    if (_locationResults.count > 0) {
+        NSInteger count = _locationResults.count;
+        for (NSInteger idx = 0; idx < count; idx++) {
+            MLogLocation* loc = [_locationResults objectAtIndex:idx];
+            MKPointAnnotation *ann = [[MKPointAnnotation alloc] init];
+            ann.coordinate = CLLocationCoordinate2DMake(loc.latitude, loc.longitude);
+            //        [ann setTitle:@"公司"];
+            //        [ann setSubtitle:@"十八英尺"];
+            //触发viewForAnnotation
+            [self.mapView addAnnotation:ann];
+        }
+    }
+}
+
+//- (CLLocation*)_applyLocationManagerChinaLocationShift:(CLLocation*)location {
+//    id sharedLocationManager = [NSClassFromString(@"MKLocationManager") performSelector:@selector(sharedLocationManager)];
+//    SEL theSelector = @selector(_applyChinaLocationShift:);
+//    
+//    // this will ensure sharedLocationManager is non-nil and responds appropriately
+//    if (![sharedLocationManager respondsToSelector:theSelector]) {
+//        return nil; // fail silently - check this in the caller
+//    }
+//    return [sharedLocationManager performSelector:theSelector withObject:location];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

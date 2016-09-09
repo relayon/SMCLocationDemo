@@ -9,6 +9,7 @@
 #import "SMCLocationManager.h"
 #import "DeviceInfo.h"
 #import "MLogLocation.h"
+#import "NSDate+String.h"
 @import UIKit;
 @import CoreLocation;
 
@@ -43,14 +44,45 @@
     id locationInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey];
     if (locationInfo) {
         _launchStatus = 1;
+        NSDate* now = [NSDate date];
+        NSString* msg = [NSString stringWithFormat:@"App被位置信息唤醒， 时间：%@", [now hy_stringDefault]];
+        [DeviceInfo scheduleNotification:@"tip" body:msg delay:1];
         [self start:_currentLocationType];
     }
+}
+
+- (NSString*)getLaunchStatus:(NSInteger)launchStatus {
+    NSString* txt = @"";
+    if (launchStatus == 0) {
+        txt = @"用户";
+    } else if (launchStatus == 1) {
+        txt = @"系统";
+    } else {
+        txt = @"未知状态";
+    }
+    return txt;
+}
+
+- (NSString*)getAppStatus:(NSInteger)appStatus {
+    NSString* txt = @"";
+    if (appStatus == UIApplicationStateActive) {
+        txt = @"前台";
+    } else if (appStatus == UIApplicationStateInactive) {
+        txt = @"未激活";
+    } else if (appStatus == UIApplicationStateBackground) {
+        txt = @"后台";
+    } else {
+        txt = @"未知状态";
+    }
+    return txt;
 }
 
 - (void)willTerminate {
     NSLog(@"%s", __FUNCTION__);
     
-    [DeviceInfo scheduleNotification:@"tip" body:@"App运行异常，已自动签出！" delay:1];
+    NSDate* now = [NSDate date];
+    NSString* msg = [NSString stringWithFormat:@"App运行结束：时间：%@，启动类型：%@", [now hy_stringDefault], [self getLaunchStatus:_launchStatus]];
+    [DeviceInfo scheduleNotification:@"tip" body:msg delay:1];
     
     BOOL started = [self serviceStarted];
     if (started) {

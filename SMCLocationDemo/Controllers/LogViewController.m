@@ -11,6 +11,7 @@
 #import "MLogRun.h"
 #import "SMCLocationManager.h"
 #import "NSDate+String.h"
+#import "DetailTableViewController.h"
 
 #define T_START     @"开始"
 #define T_STOP      @"停止"
@@ -69,7 +70,7 @@
     if (loc.applicationState == UIApplicationStateActive) {
         if (loc.launchStatus == 0) {
             // 用户
-            clr = [UIColor blueColor];
+            clr = [UIColor blackColor];
         } else if (loc.launchStatus == 1) {
             // 系统
             clr = [UIColor orangeColor];
@@ -82,8 +83,14 @@
             // 系统
             clr = [UIColor lightGrayColor];
         }
-    } else {
-        clr = [UIColor redColor];
+    } else if (loc.applicationState == UIApplicationStateInactive) {
+        if (loc.launchStatus == 0) {
+            // 用户
+            clr = [UIColor redColor];
+        } else if (loc.launchStatus == 1) {
+            // 系统
+            clr = [UIColor purpleColor];
+        }
     }
     
     return clr;
@@ -98,29 +105,39 @@
     NSString* identifier = @"TCell";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
     }
     
     MLogLocation* location = [_locationResults objectAtIndex:indexPath.row];
     cell.textLabel.text = [location.date hy_stringDefault];
     cell.textLabel.textColor = [self _getLocationColor:location];
     
+    NSString* launchStatus = [[SMCLocationManager sharedManager] getLaunchStatus:location.launchStatus];
+    NSString* appStatus = [[SMCLocationManager sharedManager] getAppStatus:location.applicationState];
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"{%@, %@}", launchStatus, appStatus];
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    [self performSegueWithIdentifier:@"SG_SHOW_DETAIL" sender:indexPath];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    DetailTableViewController* dv = segue.destinationViewController;
+    NSIndexPath* indexPath = (NSIndexPath*)sender;
+    MLogLocation* loc = [_locationResults objectAtIndex:indexPath.row];
+    dv.location = loc;
 }
-*/
+
 
 - (void)_updateButtonTitle {
     BOOL bStarted = [[SMCLocationManager sharedManager] serviceStarted];
