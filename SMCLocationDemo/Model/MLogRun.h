@@ -10,7 +10,7 @@
 
 @interface MLogRun : RLMObject
 
-@property (copy, nonatomic) NSDate* date;
+@property (strong, nonatomic) NSDate* date;
 @property (copy, nonatomic) NSString* content;
 @property (assign, nonatomic) float battery;
 // 0 - Active, 1 - Inactive, 2 - Background

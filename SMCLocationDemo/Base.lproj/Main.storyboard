@@ -137,6 +137,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="38J-aY-OQF"/>
                     <navigationItem key="navigationItem" title="地图" id="xVa-4a-ZVu"/>
+                    <connections>
+                        <outlet property="mapView" destination="UWR-yX-Zih" id="afb-d8-lXf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ph1-Pv-Lou" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -166,6 +169,9 @@
                                             <constraint firstAttribute="width" constant="80" id="j9k-1R-mac"/>
                                         </constraints>
                                         <state key="normal" title="开始"/>
+                                        <connections>
+                                            <action selector="onButtonStartStop:" destination="bQQ-HV-CHf" eventType="touchUpInside" id="KRj-BA-ggd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -182,6 +188,10 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lwF-Vs-Xdc">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bQQ-HV-CHf" id="Lc6-LA-tYb"/>
+                                    <outlet property="delegate" destination="bQQ-HV-CHf" id="h4U-dX-3N2"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -197,6 +207,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="LaQ-oP-eta"/>
                     <navigationItem key="navigationItem" title="日志" id="h1H-JH-bRX"/>
+                    <connections>
+                        <outlet property="buttonStartStop" destination="WTZ-mY-TP8" id="Nf2-Jo-PtP"/>
+                        <outlet property="tableView" destination="lwF-Vs-Xdc" id="QCM-5M-Mvz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwL-nx-UDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

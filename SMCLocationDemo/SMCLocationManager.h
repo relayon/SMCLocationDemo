@@ -11,14 +11,19 @@
 typedef NS_ENUM(NSInteger, LocationType) {
     LocationType_Standard,
     LocationType_Significant,
+    LocationType_Region,
 };
 
 @interface SMCLocationManager : NSObject
 
 + (SMCLocationManager*)sharedManager;
+- (void)launchWithOptions:(NSDictionary*)launchOptions;
+- (void)willTerminate;
 
 - (BOOL)start:(LocationType)type;
+- (void)stop;
 
-- (NSMutableString*)logByLocationType:(LocationType)type;
+- (void)setServiceStarted:(BOOL)started;
+- (BOOL)serviceStarted;
 
 @end

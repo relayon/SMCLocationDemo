@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "DeviceInfo.h"
+#import "SMCLocationManager.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [DeviceInfo monitorBattery];
+    [DeviceInfo requestNotification];
+    [[SMCLocationManager sharedManager] launchWithOptions:launchOptions];
     
     return YES;
 }
@@ -47,6 +52,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     NSLog(@"%s", __FUNCTION__);
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[SMCLocationManager sharedManager] willTerminate];
 }
 
 

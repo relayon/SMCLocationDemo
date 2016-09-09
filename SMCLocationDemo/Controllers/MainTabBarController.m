@@ -7,6 +7,7 @@
 //
 
 #import "MainTabBarController.h"
+#import "MLogLocation.h"
 
 @interface MainTabBarController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -38,6 +39,9 @@
 */
 
 - (IBAction)onButtonClearLog:(id)sender {
+    [[RLMRealm defaultRealm] transactionWithBlock:^{
+        [[RLMRealm defaultRealm] deleteAllObjects];
+    }];
     
 }
 

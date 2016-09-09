@@ -28,12 +28,21 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+}
+
+- (void)testAddMLogRun {
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     MLogRun* log = [MLogRun new];
     [realm transactionWithBlock:^{
         [realm addObject:log];
     }];
+}
+
+- (void)testReadMLogRun {
+    RLMResults *logs = [MLogRun allObjects];
+    NSLog(@"count = %ld", logs.count);
 }
 
 - (void)testPerformanceExample {
