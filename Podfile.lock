@@ -1,0 +1,15 @@
+PODS:
+  - MJExtension (3.0.13)
+  - Realm (1.0.2):
+    - Realm/Headers (= 1.0.2)
+  - Realm/Headers (1.0.2)
+
+DEPENDENCIES:
+  - MJExtension
+  - Realm
+
+SPEC CHECKSUMS:
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
+
+COCOAPODS: 0.39.0
