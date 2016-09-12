@@ -11,6 +11,8 @@
 #import <BaiduMapAPI_Location/BMKLocationComponent.h>
 #import <BaiduMapAPI_Utils/BMKUtilsComponent.h>
 #import "MLogLocation.h"
+#import "NSDate+String.h"
+#import "DetailTableViewController.h"
 
 @interface BaiduMapViewController () <BMKMapViewDelegate, BMKLocationServiceDelegate> {
     BMKMapView* _mapView;
@@ -78,9 +80,18 @@
     [_locService stopUserLocationService];
 }
 
+#pragma mark -- Overlay
+- (void)_updateOverlay {
+    [_mapView removeOverlays:_mapView.overlays];
+}
+
 #pragma mark -- Annotation
 - (void)_updateAnnotation {
     [_mapView removeAnnotations:_mapView.annotations];
+    
+    [_mapView removeOverlays:_mapView.overlays];
+    
+    CGFloat maxHorizontalAccuracy = 0;
     
 //    NSMutableArray* mary = [NSMutableArray array];
     if (_locationResults.count > 0) {
@@ -90,26 +101,40 @@
 //            MKPointAnnotation *ann = [[MKPointAnnotation alloc] init];
 //            ann.coordinate = CLLocationCoordinate2DMake(loc.latitude, loc.longitude);
             BMKPointAnnotation* ann = [BMKPointAnnotation new];
-//            ann.coordinate = CLLocationCoordinate2DMake(loc.latitude, loc.longitude);
-            
             CLLocationCoordinate2D coor = CLLocationCoordinate2DMake(loc.latitude, loc.longitude);//原始坐标
-            //转换 google地图、soso地图、aliyun地图、mapabc地图和amap地图所用坐标至百度坐标
-            NSDictionary* testdic = BMKConvertBaiduCoorFrom(coor,BMK_COORDTYPE_GPS);
             //转换GPS坐标至百度坐标(加密后的坐标)
-//            testdic = BMKConvertBaiduCoorFrom(coor,BMK_COORDTYPE_GPS);
-//            NSLog(@"x=%@,y=%@",[testdic objectForKey:@"x"],[testdic objectForKey:@"y"]);
+            NSDictionary* testdic = BMKConvertBaiduCoorFrom(coor,BMK_COORDTYPE_GPS);
             //解密加密后的坐标字典
             CLLocationCoordinate2D baiduCoor = BMKCoorDictionaryDecode(testdic);//转换后的百度坐标
             ann.coordinate = baiduCoor;
             
+            ann.title = [NSString stringWithFormat:@"%f", loc.horizontalAccuracy];
+//            ann.subtitle = [loc.timestamp hy_stringDefault];
+            ann.subtitle = [NSString stringWithFormat:@"%ld", count - idx];
+            
             [_mapView addAnnotation:ann];
+            
+            /////////////////////////////////////////////////////////////////////////
+            //添加 圆形覆盖物
+            BMKCircle* circle = [BMKCircle circleWithCenterCoordinate:baiduCoor radius:loc.horizontalAccuracy];
+            [_mapView addOverlay:circle];
+            if (loc.horizontalAccuracy > maxHorizontalAccuracy) {
+                maxHorizontalAccuracy = loc.horizontalAccuracy;
+            }
         }
     }
     
-//    if (_locationResults.count > 0) {
-//        MLogLocation* tLoc = [_locationResults lastObject];
-//        BMKUserLocation* uLoc =
-//    }
+#if 0
+    if (_locationResults.count > 0) {
+        MLogLocation* tLoc = [_locationResults firstObject];
+        CLLocationCoordinate2D coor = CLLocationCoordinate2DMake(tLoc.latitude, tLoc.longitude);//原始坐标
+        NSDictionary* testdic = BMKConvertBaiduCoorFrom(coor,BMK_COORDTYPE_GPS);
+        CLLocationCoordinate2D baiduCoor = BMKCoorDictionaryDecode(testdic);//转换后的百度坐标
+        //添加 圆形覆盖物
+        BMKCircle* circle = [BMKCircle circleWithCenterCoordinate:baiduCoor radius:tLoc.horizontalAccuracy];
+        [_mapView addOverlay:circle];
+    }
+#endif
     
 }
 
@@ -162,8 +187,32 @@
     if ([annotation isKindOfClass:[BMKPointAnnotation class]]) {
         BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"myAnnotation"];
         newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
-        newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
+        newAnnotationView.animatesDrop = NO;// 设置该标注点动画显示
         return newAnnotationView;
+    }
+    return nil;
+}
+
+- (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
+    BMKPointAnnotation* ann = view.annotation;
+    NSInteger idx = [ann.subtitle integerValue] - 1;
+    MLogLocation* loc = [_locationResults objectAtIndex:idx];
+    
+    DetailTableViewController* detail = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailTableViewController"];
+    detail.location = loc;
+    [self.navigationController pushViewController:detail animated:YES];
+}
+
+// Override
+- (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(id <BMKOverlay>)overlay{
+    if ([overlay isKindOfClass:[BMKCircle class]]){
+//        BMKCircleView* circleView = [[[BMKCircleView alloc] initWithOverlay:overlay] autorelease];
+        BMKCircleView* circleView = [[BMKCircleView alloc] initWithOverlay:overlay];
+        circleView.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+        circleView.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
+        circleView.lineWidth = 2.0;
+        
+        return circleView;
     }
     return nil;
 }

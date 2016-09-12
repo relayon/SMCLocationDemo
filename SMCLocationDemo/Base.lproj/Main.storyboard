@@ -220,7 +220,7 @@
         <!--详情-->
         <scene sceneID="gAr-f1-8m8">
             <objects>
-                <tableViewController id="sNC-DJ-CeV" customClass="DetailTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DetailTableViewController" id="sNC-DJ-CeV" customClass="DetailTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EHg-Nt-5Dr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,21 +256,9 @@
                     <view key="view" contentMode="scaleToFill" id="Tbm-or-mUa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8yU-l1-SnW"/>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="pFe-YT-KE0" firstAttribute="top" secondItem="8yU-l1-SnW" secondAttribute="bottom" id="0CL-X2-Xc8"/>
-                            <constraint firstItem="8yU-l1-SnW" firstAttribute="top" secondItem="l7f-e9-eKD" secondAttribute="bottom" id="JDi-dC-sft"/>
-                            <constraint firstItem="8yU-l1-SnW" firstAttribute="leading" secondItem="Tbm-or-mUa" secondAttribute="leading" id="XEl-qR-3RY"/>
-                            <constraint firstAttribute="trailing" secondItem="8yU-l1-SnW" secondAttribute="trailing" id="Zfe-jH-zgT"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="位置" id="Dxl-LM-b87"/>
-                    <connections>
-                        <outlet property="mapView" destination="8yU-l1-SnW" id="Hk5-Pe-CoB"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCe-Dw-XzR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
