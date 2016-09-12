@@ -7,19 +7,27 @@
 //
 
 #import "ChangeTimeViewController.h"
+#import "SMCLocationManager.h"
 
-@interface ChangeTimeViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface ChangeTimeViewController () <UIPickerViewDataSource, UIPickerViewDelegate> {
+    MLocationConfig* _locationConfig;
+}
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 @end
 
 @implementation ChangeTimeViewController
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.pickerView selectRow:10 inComponent:1 animated:NO];
+    _locationConfig = [[SMCLocationManager sharedManager] getLocationConfig];
+    [self.pickerView selectRow:_locationConfig.timeSpan inComponent:_locationConfig.timeType animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +54,7 @@
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSString* title = @"";
     if (component == 0) {
-        title = [NSString stringWithFormat:@"%ld", row+1];
+        title = [NSString stringWithFormat:@"%ld", row];
     } else if (component == 1) {
         if (row == 0) {
             title = @"秒";
@@ -56,6 +64,12 @@
     }
     
     return title;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    _locationConfig.timeType = component;
+    _locationConfig.timeSpan = row;
+    [[SMCLocationManager sharedManager] setLocationConfig:_locationConfig];
 }
 
 /*

@@ -20,6 +20,7 @@
 		549080E01D82C0220064E01C /* ShowLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549080DF1D82C0220064E01C /* ShowLocationViewController.m */; };
 		54CA7AFF1D864C06000608E0 /* BaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA7AFE1D864C06000608E0 /* BaiduMapViewController.m */; };
 		54CA7B021D865EFE000608E0 /* ChangeTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA7B011D865EFE000608E0 /* ChangeTimeViewController.m */; };
+		54CA7B051D868936000608E0 /* MLocationConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA7B041D868936000608E0 /* MLocationConfig.m */; };
 		54E355841D7FD8C200AC2565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E355831D7FD8C200AC2565 /* main.m */; };
 		54E355871D7FD8C200AC2565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E355861D7FD8C200AC2565 /* AppDelegate.m */; };
 		54E3558D1D7FD8C200AC2565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E3558B1D7FD8C200AC2565 /* Main.storyboard */; };
@@ -81,6 +82,8 @@
 		54CA7AFE1D864C06000608E0 /* BaiduMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapViewController.m; sourceTree = "<group>"; };
 		54CA7B001D865EFE000608E0 /* ChangeTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeTimeViewController.h; sourceTree = "<group>"; };
 		54CA7B011D865EFE000608E0 /* ChangeTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeTimeViewController.m; sourceTree = "<group>"; };
+		54CA7B031D868936000608E0 /* MLocationConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLocationConfig.h; sourceTree = "<group>"; };
+		54CA7B041D868936000608E0 /* MLocationConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLocationConfig.m; sourceTree = "<group>"; };
 		54E3557F1D7FD8C200AC2565 /* SMCLocationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMCLocationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54E355831D7FD8C200AC2565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		54E355851D7FD8C200AC2565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 				549080D61D8267750064E01C /* MLogLocation.m */,
 				549080D81D82678D0064E01C /* MLogRun.h */,
 				549080D91D82678D0064E01C /* MLogRun.m */,
+				54CA7B031D868936000608E0 /* MLocationConfig.h */,
+				54CA7B041D868936000608E0 /* MLocationConfig.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -521,6 +526,7 @@
 			files = (
 				549080CF1D8264850064E01C /* NSDate+String.m in Sources */,
 				549080C81D8264180064E01C /* LogViewController.m in Sources */,
+				54CA7B051D868936000608E0 /* MLocationConfig.m in Sources */,
 				549080DD1D82B95F0064E01C /* DetailTableViewController.m in Sources */,
 				54E355BD1D7FDDE200AC2565 /* LocationViewController.m in Sources */,
 				54E355871D7FD8C200AC2565 /* AppDelegate.m in Sources */,

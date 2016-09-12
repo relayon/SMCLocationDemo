@@ -10,9 +10,11 @@
 #import "DeviceInfo.h"
 #import "MLogLocation.h"
 #import "NSDate+String.h"
+#import "MJExtension.h"
 @import UIKit;
 @import CoreLocation;
 
+#define K_LOCATION_TIME_CONFIG       @"K_LOCATION_TIME_CONFIG"
 #define K_LOCATION_SERVICE_STARTED   @"K_LOCATION_SERVICE_STARTED"
 
 @interface SMCLocationManager () <CLLocationManagerDelegate> {
@@ -23,6 +25,8 @@
     
     NSInteger _launchStatus;
     NSTimer* _locationTimer;
+    
+    MLocationConfig* _locationConfig;
 }
 
 @end
@@ -38,6 +42,35 @@
     });
     
     return locationManager;
+}
+
+- (MLocationConfig*)getLocationConfig {
+    if (_locationConfig == nil) {
+        NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
+        NSDictionary* tDic = [userDefault objectForKey:K_LOCATION_TIME_CONFIG];
+        if (tDic) {
+            MLocationConfig* config = [MLocationConfig mj_objectWithKeyValues:tDic];
+            _locationConfig = config;
+        } else {
+            MLocationConfig* config = [MLocationConfig new];
+            [self setLocationConfig:config];
+            _locationConfig = config;
+        }
+    }
+    
+    return _locationConfig;
+}
+
+- (void)setLocationConfig:(MLocationConfig*)config {
+    NSUserDefaults* userDefault = [NSUserDefaults standardUserDefaults];
+    if (config == nil) {
+        [userDefault setObject:nil forKey:K_LOCATION_TIME_CONFIG];
+    } else {
+        NSDictionary* tDic = [config mj_keyValues];
+        [userDefault setObject:tDic forKey:K_LOCATION_TIME_CONFIG];
+    }
+    
+    _locationConfig = config;
 }
 
 - (void)launchWithOptions:(NSDictionary*)launchOptions {
@@ -239,7 +272,9 @@
             [realm addObject:location];
         }];
         
-        NSTimeInterval interval = 60;   // 一分钟
+//        NSTimeInterval interval = 60;   // 一分钟
+        MLocationConfig* cfg = [self getLocationConfig];
+        NSTimeInterval interval = [cfg getTimeInterval];   // 一分钟
         _locationTimer = [NSTimer scheduledTimerWithTimeInterval:interval repeats:NO block:^(NSTimer * _Nonnull timer) {
             // 设置精度，获取精确位置
             [self _bestAccuracy];

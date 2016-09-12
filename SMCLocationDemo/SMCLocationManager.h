@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MLocationConfig.h"
 
 typedef NS_ENUM(NSInteger, LocationType) {
     LocationType_Standard,
@@ -17,6 +18,10 @@ typedef NS_ENUM(NSInteger, LocationType) {
 @interface SMCLocationManager : NSObject
 
 + (SMCLocationManager*)sharedManager;
+
+- (MLocationConfig*)getLocationConfig;
+- (void)setLocationConfig:(MLocationConfig*)config;
+
 - (void)launchWithOptions:(NSDictionary*)launchOptions;
 - (void)willTerminate;
 
@@ -29,5 +34,7 @@ typedef NS_ENUM(NSInteger, LocationType) {
 // 获取 位置服务 的启动类型
 - (NSString*)getLaunchStatus:(NSInteger)launchStatus;
 - (NSString*)getAppStatus:(NSInteger)appStatus;
+
+
 
 @end
