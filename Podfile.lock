@@ -1,14 +1,17 @@
 PODS:
+  - BaiduMapKit (3.0.0)
   - MJExtension (3.0.13)
   - Realm (1.0.2):
     - Realm/Headers (= 1.0.2)
   - Realm/Headers (1.0.2)
 
 DEPENDENCIES:
+  - BaiduMapKit
   - MJExtension
   - Realm
 
 SPEC CHECKSUMS:
+  BaiduMapKit: de2a726d5296d6b2dc0e974b683af73153608dcd
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
 

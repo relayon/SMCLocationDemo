@@ -9,8 +9,12 @@
 #import "AppDelegate.h"
 #import "DeviceInfo.h"
 #import "SMCLocationManager.h"
+#import <BaiduMapAPI_Map/BMKMapComponent.h>
 
-@interface AppDelegate ()
+#define K_BAIDU_MAP_KEY     @"LGQ7hotIco4RWA2uWiqXLuIbDLwKh7Bg"
+
+BMKMapManager* _mapManager;
+@interface AppDelegate () <BMKGeneralDelegate>
 
 @end
 
@@ -19,6 +23,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // 要使用百度地图，请先启动BaiduMapManager
+    _mapManager = [[BMKMapManager alloc]init];
+    BOOL ret = [_mapManager start:K_BAIDU_MAP_KEY generalDelegate:self];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+    
     [DeviceInfo monitorBattery];
     [DeviceInfo requestNotification];
     [[SMCLocationManager sharedManager] launchWithOptions:launchOptions];
@@ -55,5 +66,34 @@
     [[SMCLocationManager sharedManager] willTerminate];
 }
 
+#pragma mark -
+#pragma mark Memory management
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    /*
+     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
+     */
+}
+
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
+}
 
 @end

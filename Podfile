@@ -5,6 +5,7 @@ def my_pods
     pod 'Realm'
     #JSON解析
     pod 'MJExtension'
+    pod 'BaiduMapKit' #百度地图SDK
 end
 
 target 'SMCLocationDemo' do

@@ -95,7 +95,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRG-dj-g9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="369" y="-358"/>
+            <point key="canvasLocation" x="447" y="-995"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KsC-SG-jUt">
@@ -299,6 +299,11 @@
                                 <action selector="onSegmentedValueChanged:" destination="wNH-dW-VpM" eventType="valueChanged" id="cjV-ch-cRW"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" title="时间" id="g1c-MB-I8e">
+                            <connections>
+                                <segue destination="r3p-Yw-wBm" kind="show" id="M4W-8l-NC4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="LtY-D9-Fe3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -308,12 +313,33 @@
                     <connections>
                         <outlet property="segmentedControl" destination="wNu-Fz-X2v" id="OtZ-bH-GR3"/>
                         <segue destination="bQQ-HV-CHf" kind="relationship" relationship="viewControllers" id="6ny-nK-1Hx"/>
-                        <segue destination="CIt-1v-D7H" kind="relationship" relationship="viewControllers" id="wHt-2N-cMl"/>
+                        <segue destination="IH9-bh-DTx" kind="relationship" relationship="viewControllers" id="ag6-lA-C85"/>
+                        <segue destination="CIt-1v-D7H" kind="relationship" relationship="viewControllers" id="zFj-Kl-Uec"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3N-w9-wKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="292" y="537"/>
+        </scene>
+        <!--百度-->
+        <scene sceneID="H6W-SF-umF">
+            <objects>
+                <viewController id="IH9-bh-DTx" customClass="BaiduMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lMg-gZ-9UI"/>
+                        <viewControllerLayoutGuide type="bottom" id="FDI-YO-M5T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="foT-a3-zuE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="kn6-XI-zoZ"/>
+                    <navigationItem key="navigationItem" title="百度" id="jOn-rW-oR8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I4G-aY-Saq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="537"/>
         </scene>
         <!--位置监控-->
         <scene sceneID="nzp-Hc-tgR">
@@ -389,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SL9-0b-8Jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1228" y="-372"/>
+            <point key="canvasLocation" x="1244" y="-1009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hlX-4W-TeY">
@@ -406,6 +432,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LdM-k1-xQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-351" y="-348"/>
+        </scene>
+        <!--间隔-->
+        <scene sceneID="Ou6-8M-G1g">
+            <objects>
+                <viewController id="r3p-Yw-wBm" customClass="ChangeTimeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eT7-9K-U0G"/>
+                        <viewControllerLayoutGuide type="bottom" id="F44-IV-x1v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0hp-iW-dsJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bG-Bf-ZG1">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="lhF-KK-5PW"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="r3p-Yw-wBm" id="CHN-t3-PrZ"/>
+                                    <outlet property="delegate" destination="r3p-Yw-wBm" id="kLf-Yo-Ib5"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8bG-Bf-ZG1" secondAttribute="trailing" id="E13-Bk-aqv"/>
+                            <constraint firstItem="8bG-Bf-ZG1" firstAttribute="top" secondItem="eT7-9K-U0G" secondAttribute="bottom" constant="8" id="llX-Jk-AbV"/>
+                            <constraint firstItem="8bG-Bf-ZG1" firstAttribute="leading" secondItem="0hp-iW-dsJ" secondAttribute="leading" id="vOh-Jq-pZA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="间隔" id="DcU-dX-17e"/>
+                    <connections>
+                        <outlet property="pickerView" destination="8bG-Bf-ZG1" id="wiT-1h-dLW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zwP-xX-j9y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="-157"/>
         </scene>
     </scenes>
 </document>

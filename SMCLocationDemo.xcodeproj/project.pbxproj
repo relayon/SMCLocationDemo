@@ -18,6 +18,8 @@
 		549080DA1D82678D0064E01C /* MLogRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 549080D91D82678D0064E01C /* MLogRun.m */; };
 		549080DD1D82B95F0064E01C /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549080DC1D82B95F0064E01C /* DetailTableViewController.m */; };
 		549080E01D82C0220064E01C /* ShowLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549080DF1D82C0220064E01C /* ShowLocationViewController.m */; };
+		54CA7AFF1D864C06000608E0 /* BaiduMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA7AFE1D864C06000608E0 /* BaiduMapViewController.m */; };
+		54CA7B021D865EFE000608E0 /* ChangeTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 54CA7B011D865EFE000608E0 /* ChangeTimeViewController.m */; };
 		54E355841D7FD8C200AC2565 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E355831D7FD8C200AC2565 /* main.m */; };
 		54E355871D7FD8C200AC2565 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E355861D7FD8C200AC2565 /* AppDelegate.m */; };
 		54E3558D1D7FD8C200AC2565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54E3558B1D7FD8C200AC2565 /* Main.storyboard */; };
@@ -75,6 +77,10 @@
 		549080DC1D82B95F0064E01C /* DetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewController.m; sourceTree = "<group>"; };
 		549080DE1D82C0220064E01C /* ShowLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowLocationViewController.h; sourceTree = "<group>"; };
 		549080DF1D82C0220064E01C /* ShowLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowLocationViewController.m; sourceTree = "<group>"; };
+		54CA7AFD1D864C06000608E0 /* BaiduMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMapViewController.h; sourceTree = "<group>"; };
+		54CA7AFE1D864C06000608E0 /* BaiduMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapViewController.m; sourceTree = "<group>"; };
+		54CA7B001D865EFE000608E0 /* ChangeTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeTimeViewController.h; sourceTree = "<group>"; };
+		54CA7B011D865EFE000608E0 /* ChangeTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeTimeViewController.m; sourceTree = "<group>"; };
 		54E3557F1D7FD8C200AC2565 /* SMCLocationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMCLocationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54E355831D7FD8C200AC2565 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		54E355851D7FD8C200AC2565 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -142,6 +148,10 @@
 				549080DC1D82B95F0064E01C /* DetailTableViewController.m */,
 				549080DE1D82C0220064E01C /* ShowLocationViewController.h */,
 				549080DF1D82C0220064E01C /* ShowLocationViewController.m */,
+				54CA7AFD1D864C06000608E0 /* BaiduMapViewController.h */,
+				54CA7AFE1D864C06000608E0 /* BaiduMapViewController.m */,
+				54CA7B001D865EFE000608E0 /* ChangeTimeViewController.h */,
+				54CA7B011D865EFE000608E0 /* ChangeTimeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -517,6 +527,8 @@
 				549080DA1D82678D0064E01C /* MLogRun.m in Sources */,
 				549080E01D82C0220064E01C /* ShowLocationViewController.m in Sources */,
 				549080CB1D8264260064E01C /* MapViewController.m in Sources */,
+				54CA7AFF1D864C06000608E0 /* BaiduMapViewController.m in Sources */,
+				54CA7B021D865EFE000608E0 /* ChangeTimeViewController.m in Sources */,
 				549080C51D8263B00064E01C /* MainTabBarController.m in Sources */,
 				54E355B71D7FD8F400AC2565 /* SMCLocationManager.m in Sources */,
 				549080D31D8264CB0064E01C /* DeviceInfo.m in Sources */,

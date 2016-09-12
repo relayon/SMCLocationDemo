@@ -239,7 +239,8 @@
             [realm addObject:location];
         }];
         
-        _locationTimer = [NSTimer scheduledTimerWithTimeInterval:5 repeats:NO block:^(NSTimer * _Nonnull timer) {
+        NSTimeInterval interval = 60;   // 一分钟
+        _locationTimer = [NSTimer scheduledTimerWithTimeInterval:interval repeats:NO block:^(NSTimer * _Nonnull timer) {
             // 设置精度，获取精确位置
             [self _bestAccuracy];
         }];
