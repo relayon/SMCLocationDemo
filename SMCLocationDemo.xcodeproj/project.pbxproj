@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		420A8D02F684F091D630126A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 475F0B722CD6E423E052C636 /* libPods.a */; };
+		540828FD1D87C99B00311A3E /* BaiduTraceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540828FC1D87C99B00311A3E /* BaiduTraceSDK.framework */; };
+		540828FE1D87C9B100311A3E /* BaiduTraceSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540828FC1D87C99B00311A3E /* BaiduTraceSDK.framework */; };
+		540828FF1D87C9B100311A3E /* BaiduTraceSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 540828FC1D87C99B00311A3E /* BaiduTraceSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		544000EC1D87A43500654B8A /* TraceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 544000EB1D87A43500654B8A /* TraceViewController.m */; };
 		549080C11D8261370064E01C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 549080C01D8261370064E01C /* MapKit.framework */; };
 		549080C51D8263B00064E01C /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549080C41D8263B00064E01C /* MainTabBarController.m */; };
 		549080C81D8264180064E01C /* LogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 549080C71D8264180064E01C /* LogViewController.m */; };
@@ -52,6 +56,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		544000F21D87A84700654B8A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				540828FF1D87C9B100311A3E /* BaiduTraceSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		15E263310B4FCBFC9972B226 /* Pods-SMCLocationDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMCLocationDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMCLocationDemoTests/Pods-SMCLocationDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A772BC3A7A4F837E0F13584 /* Pods-SMCLocationDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMCLocationDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMCLocationDemo/Pods-SMCLocationDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +77,9 @@
 		4ADB8E03A910891B5345B730 /* Pods-SMCLocationDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMCLocationDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMCLocationDemoTests/Pods-SMCLocationDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		4FD0504EEA3724AA35F3A700 /* Pods-SMCLocationDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMCLocationDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMCLocationDemo/Pods-SMCLocationDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		5105828120789A31A35B7368 /* libPods-SMCLocationDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SMCLocationDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		540828FC1D87C99B00311A3E /* BaiduTraceSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduTraceSDK.framework; sourceTree = "<group>"; };
+		544000EA1D87A43500654B8A /* TraceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceViewController.h; sourceTree = "<group>"; };
+		544000EB1D87A43500654B8A /* TraceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceViewController.m; sourceTree = "<group>"; };
 		549080C01D8261370064E01C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		549080C31D8263B00064E01C /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		549080C41D8263B00064E01C /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
@@ -114,6 +135,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540828FE1D87C9B100311A3E /* BaiduTraceSDK.framework in Frameworks */,
+				540828FD1D87C99B00311A3E /* BaiduTraceSDK.framework in Frameworks */,
 				549080C11D8261370064E01C /* MapKit.framework in Frameworks */,
 				420A8D02F684F091D630126A /* libPods.a in Frameworks */,
 				966122C89FB5C4AD25C6FA9F /* libPods-SMCLocationDemo.a in Frameworks */,
@@ -138,6 +161,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		540828FB1D87C99B00311A3E /* BaiduTrace_iOSSDK_v2.1.2_distribution */ = {
+			isa = PBXGroup;
+			children = (
+				540828FC1D87C99B00311A3E /* BaiduTraceSDK.framework */,
+			);
+			path = BaiduTrace_iOSSDK_v2.1.2_distribution;
+			sourceTree = "<group>";
+		};
 		549080C21D8263580064E01C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +186,8 @@
 				54CA7AFE1D864C06000608E0 /* BaiduMapViewController.m */,
 				54CA7B001D865EFE000608E0 /* ChangeTimeViewController.h */,
 				54CA7B011D865EFE000608E0 /* ChangeTimeViewController.m */,
+				544000EA1D87A43500654B8A /* TraceViewController.h */,
+				544000EB1D87A43500654B8A /* TraceViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -215,6 +248,7 @@
 		54E355811D7FD8C200AC2565 /* SMCLocationDemo */ = {
 			isa = PBXGroup;
 			children = (
+				540828FB1D87C99B00311A3E /* BaiduTrace_iOSSDK_v2.1.2_distribution */,
 				549080D41D8267300064E01C /* Model */,
 				549080D01D8264BB0064E01C /* Others */,
 				549080CC1D82647F0064E01C /* Category */,
@@ -299,6 +333,7 @@
 				54E3557D1D7FD8C200AC2565 /* Resources */,
 				581165BA7098C80C4592E7D1 /* Embed Pods Frameworks */,
 				89B34B26AB747D2EAF8ABC84 /* Copy Pods Resources */,
+				544000F21D87A84700654B8A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -532,6 +567,7 @@
 				54E355871D7FD8C200AC2565 /* AppDelegate.m in Sources */,
 				549080DA1D82678D0064E01C /* MLogRun.m in Sources */,
 				549080E01D82C0220064E01C /* ShowLocationViewController.m in Sources */,
+				544000EC1D87A43500654B8A /* TraceViewController.m in Sources */,
 				549080CB1D8264260064E01C /* MapViewController.m in Sources */,
 				54CA7AFF1D864C06000608E0 /* BaiduMapViewController.m in Sources */,
 				54CA7B021D865EFE000608E0 /* ChangeTimeViewController.m in Sources */,
@@ -689,12 +725,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4FD0504EEA3724AA35F3A700 /* Pods-SMCLocationDemo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RTCEZS3U4Z;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SMCLocationDemo/BaiduTrace_iOSSDK_v2.1.2_develop",
+					"$(PROJECT_DIR)/SMCLocationDemo/BaiduTrace_iOSSDK_v2.1.2_distribution",
+				);
 				INFOPLIST_FILE = SMCLocationDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rds.mos.visithelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smc.test.location;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -703,12 +746,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A772BC3A7A4F837E0F13584 /* Pods-SMCLocationDemo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RTCEZS3U4Z;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SMCLocationDemo/BaiduTrace_iOSSDK_v2.1.2_develop",
+					"$(PROJECT_DIR)/SMCLocationDemo/BaiduTrace_iOSSDK_v2.1.2_distribution",
+				);
 				INFOPLIST_FILE = SMCLocationDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rds.mos.visithelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smc.test.location;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

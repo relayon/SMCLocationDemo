@@ -11,7 +11,7 @@
 #import "SMCLocationManager.h"
 #import <BaiduMapAPI_Map/BMKMapComponent.h>
 
-#define K_BAIDU_MAP_KEY     @"LGQ7hotIco4RWA2uWiqXLuIbDLwKh7Bg"
+#define K_BAIDU_MAP_KEY     @"ZMqzchrdY7u67A5kNT5APfmL4382y7xF"
 
 BMKMapManager* _mapManager;
 @interface AppDelegate () <BMKGeneralDelegate>
