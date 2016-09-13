@@ -110,10 +110,11 @@
             
             ann.title = [NSString stringWithFormat:@"%f", loc.horizontalAccuracy];
 //            ann.subtitle = [loc.timestamp hy_stringDefault];
-            ann.subtitle = [NSString stringWithFormat:@"%ld", count - idx];
+            ann.subtitle = [NSString stringWithFormat:@"%ld", idx];
             
             [_mapView addAnnotation:ann];
             
+#if 0
             /////////////////////////////////////////////////////////////////////////
             //添加 圆形覆盖物
             BMKCircle* circle = [BMKCircle circleWithCenterCoordinate:baiduCoor radius:loc.horizontalAccuracy];
@@ -121,6 +122,7 @@
             if (loc.horizontalAccuracy > maxHorizontalAccuracy) {
                 maxHorizontalAccuracy = loc.horizontalAccuracy;
             }
+#endif
         }
     }
     
@@ -195,7 +197,7 @@
 
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
     BMKPointAnnotation* ann = view.annotation;
-    NSInteger idx = [ann.subtitle integerValue] - 1;
+    NSInteger idx = [ann.subtitle integerValue];
     MLogLocation* loc = [_locationResults objectAtIndex:idx];
     
     DetailTableViewController* detail = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailTableViewController"];
