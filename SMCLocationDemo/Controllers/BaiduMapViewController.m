@@ -197,12 +197,15 @@
 
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
     BMKPointAnnotation* ann = view.annotation;
-    NSInteger idx = [ann.subtitle integerValue];
-    MLogLocation* loc = [_locationResults objectAtIndex:idx];
-    
-    DetailTableViewController* detail = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailTableViewController"];
-    detail.location = loc;
-    [self.navigationController pushViewController:detail animated:YES];
+    NSString* st = ann.subtitle;
+    if (st && st.length > 0) {
+        NSInteger idx = [ann.subtitle integerValue];
+        MLogLocation* loc = [_locationResults objectAtIndex:idx];
+        
+        DetailTableViewController* detail = [[self storyboard] instantiateViewControllerWithIdentifier:@"DetailTableViewController"];
+        detail.location = loc;
+        [self.navigationController pushViewController:detail animated:YES];
+    }
 }
 
 // Override
