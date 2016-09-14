@@ -68,6 +68,7 @@
     } else {
         NSDictionary* tDic = [config mj_keyValues];
         [userDefault setObject:tDic forKey:K_LOCATION_TIME_CONFIG];
+        [userDefault synchronize];
     }
     
     _locationConfig = config;

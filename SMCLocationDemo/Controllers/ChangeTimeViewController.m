@@ -27,7 +27,8 @@
     // Do any additional setup after loading the view.
     
     _locationConfig = [[SMCLocationManager sharedManager] getLocationConfig];
-    [self.pickerView selectRow:_locationConfig.timeSpan inComponent:_locationConfig.timeType animated:NO];
+    [self.pickerView selectRow:_locationConfig.timeSpan inComponent:0 animated:NO];
+    [self.pickerView selectRow:_locationConfig.timeType inComponent:1 animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,8 +68,11 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    _locationConfig.timeType = component;
-    _locationConfig.timeSpan = row;
+    if (component == 0) {
+        _locationConfig.timeSpan = row;
+    } else if (component == 1) {
+        _locationConfig.timeType = row;
+    }
     [[SMCLocationManager sharedManager] setLocationConfig:_locationConfig];
 }
 

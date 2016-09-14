@@ -341,17 +341,25 @@
 */
 
 - (IBAction)onButtonClear:(id)sender {
+#if 1
     _logs = [NSMutableString string];
     self.textView.text = _logs;
+    [self.textView resignFirstResponder];
+#endif
+//    static int fid = 1;
+//    [[BTRACEAction shared] deleteFence:self serviceId:T_SID fenceId:fid];
+//    fid++;
+//    NSLog(@"fid === %i", fid);
 }
 
 - (IBAction)onButtonStart:(id)sender {
+#if 0
     // 创建围栏
     NSString* tCenter = [NSString stringWithFormat:@"%f,%f", T_LONGITUDE, T_LATITUDE];
     [[BTRACEAction shared] createCircularFence:self
                                      serviceId:T_SID
-                                     fenceName:@"fenceA"
-                                     fenceDesc:@"围栏描述"
+                                     fenceName:@"斯迈康"
+                                     fenceDesc:@"品尊国际十八英尺"
                                        creator:T_IDENTIFIER
                               monitoredPersons:T_IDENTIFIER
                                      observers:T_IDENTIFIER
@@ -365,5 +373,8 @@
                                         radius:K_FENCE_RADIUS
                                 alarmCondition:3
                                      precision:50];
+#endif
+    // 查询围栏列表
+    [[BTRACEAction shared] queryFenceList:self serviceId:T_SID creator:T_IDENTIFIER fenceIds:nil];
 }
 @end

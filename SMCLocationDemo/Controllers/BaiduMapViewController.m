@@ -155,7 +155,7 @@
 - (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
 {
     [_mapView updateLocationData:userLocation];
-    NSLog(@"heading is %@",userLocation.heading);
+//    NSLog(@"heading is %@",userLocation.heading);
 }
 
 /**
@@ -206,6 +206,29 @@
         detail.location = loc;
         [self.navigationController pushViewController:detail animated:YES];
     }
+}
+
+- (void)mapView:(BMKMapView *)mapView onClickedMapBlank:(CLLocationCoordinate2D)coordinate {
+    NSLog(@"%s", __FUNCTION__);
+    NSLog(@"%s - %@", __FUNCTION__, [NSString stringWithFormat:@"%f, %f", coordinate.latitude, coordinate.longitude]);
+}
+
+/**
+ *点中覆盖物后会回调此接口，目前只支持点中BMKPolylineView时回调
+ *@param mapview 地图View
+ *@param overlayView 覆盖物view信息
+ */
+- (void)mapView:(BMKMapView *)mapView onClickedBMKOverlayView:(BMKOverlayView *)overlayView {
+    NSLog(@"%s", __FUNCTION__);
+}
+
+/**
+ *点中底图标注后会回调此接口
+ *@param mapview 地图View
+ *@param mapPoi 标注点信息
+ */
+- (void)mapView:(BMKMapView *)mapView onClickedMapPoi:(BMKMapPoi*)mapPoi {
+    NSLog(@"%s - %@", __FUNCTION__, mapPoi.text);
 }
 
 // Override
