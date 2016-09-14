@@ -249,7 +249,7 @@
 
 - (void)notify:(NSString*)msg {
     [_logs appendString:msg];
-    [DeviceInfo scheduleNotification:@"test" body:msg delay:1];
+//    [DeviceInfo scheduleNotification:@"test" body:msg delay:1];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         self.textView.text = _logs;
